@@ -8,12 +8,12 @@ def home(request):
 
 
 def translate(request):
-    original = request.GET['originaltext']
+    original = request.GET['originaltext'].lower()
     result = ''
     for word in original.split():
         if word.startswith(VOWELS):  # starts with vowel
-            result += word + 'yay'
+            result += word + 'yay '
         else:  # starts with consonant
-            result += word[1:] + word[0] + 'ay'
+            result += word[1:] + word[0] + 'ay '
 
-    return render(request, original)
+    return render(request, result)
